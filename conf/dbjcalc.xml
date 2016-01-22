@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<dbjcalc>
+    <calcultor>
+        <currentVersion>javay-0.0.0</currentVersion>
+        <decimalLength>40</decimalLength>
+        <roundMode>HALF_EVENT</roundMode>
+    </calcultor>
+    <autoUpdate>
+        <isAutoUpdate>true</isAutoUpdate>
+        <websites>
+            <website isSelected="true">
+                <name>github</name>
+                <address>https://raw.githubusercontent.com/dubenju/javay/master/</address>
+            </website>
+            <website isSelected="false">
+                <name>sourceforge</name>
+                <address></address>
+            </website>
+            <website isSelected="false">
+                <name>开源中国社区</name>
+                <address></address>
+            </website>
+        </websites>
+        <retry>2</retry>
+    </autoUpdate>
+</dbjcalc>

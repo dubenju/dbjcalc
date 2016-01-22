@@ -33,16 +33,17 @@ import javay.awt.event.CalcultorAWTEventListener;
  */
 public class CalcultorFrame extends JFrame {
 
-	/**
-	 *
-	 */
-	private static final long serialVersionUID = 1L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private static final Logger log = LoggerFactory.getLogger(CalcultorFrame.class);
 
-	/**
-	 * @throws HeadlessException
-	 */
-	public CalcultorFrame() {
+    /**
+     * @throws HeadlessException
+     */
+    public CalcultorFrame() {
+        log.debug("----- begin -----");
         JMenuBar  menuBar      = new JMenuBar();
         JMenu     menuFile     = new JMenu("文件");
         JMenuItem menuFileExit = new JMenuItem("退出", KeyEvent.VK_X);
@@ -51,6 +52,7 @@ public class CalcultorFrame extends JFrame {
         menuFileExit.addActionListener (
             new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
+                    log.info("----- 文件 > 退出");
                     CalcultorFrame.this.windowClosed();
                 }
             }
@@ -66,11 +68,12 @@ public class CalcultorFrame extends JFrame {
         aboutDialog.setLocation(300,300); 
         aboutDialog.addWindowListener(new WindowAdapter() {
             @SuppressWarnings("unused")
-			public void WindowClosing(WindowEvent e){ 
+            public void WindowClosing(WindowEvent e){ 
                 dispose();
            } 
         }); 
 
+        JSettingDlg settingDlg = new JSettingDlg(this);
         menuFile.add(menuFileExit);
         menuBar.add(menuFile);
 
@@ -83,8 +86,13 @@ public class CalcultorFrame extends JFrame {
         menuEdit.add(menuEditPaste);
         menuBar.add(menuEdit);
 
-        JMenu menuView = new JMenu("视图");
+        JMenu menuView = new JMenu("设置");
         JMenuItem options = new JMenuItem("选项",KeyEvent.VK_O);
+        options.addActionListener(new ActionListener(){ 
+            public void actionPerformed(ActionEvent e){ 
+                settingDlg.setVisible(true); 
+            } 
+           });
         menuView.add(options);
         menuBar.add(menuView);
 
@@ -94,8 +102,8 @@ public class CalcultorFrame extends JFrame {
         JMenuItem aboutMenuItem=new JMenuItem("关于..",KeyEvent.VK_A);
         aboutMenuItem.addActionListener(new ActionListener(){ 
             public void actionPerformed(ActionEvent e){ 
-             aboutDialog.setVisible(true); 
-            } 
+                aboutDialog.setVisible(true); 
+            }
            });
         menuHelp.add(helpHelp);
         menuHelp.add(checkUpdate);
@@ -120,13 +128,14 @@ public class CalcultorFrame extends JFrame {
         Toolkit toolkit = Toolkit.getDefaultToolkit();
         // 注册应用程序全局键盘事件, 所有的键盘事件都会被此事件监听器处理.  
         toolkit.addAWTEventListener( new CalcultorAWTEventListener(panel), AWTEvent.KEY_EVENT_MASK);
-	}
+        log.debug("-----   end -----");
+    }
 
-	/**
+    /**
      * Shutdown procedure when run as an application.
      */
     protected void windowClosed() {
-    	// Exit application.
+        // Exit application.
         System.exit(0);
     }
 }
