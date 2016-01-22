@@ -3,18 +3,12 @@ package javay.swing;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.xml.bind.JAXB;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,7 +23,7 @@ public class JSettingDlg extends JDialog  implements ActionListener {
     TabbedPanel tabp;
 
     /**
-     * 
+     *
      */
     private static final long serialVersionUID = 1L;
     public JSettingDlg(JFrame frame){
