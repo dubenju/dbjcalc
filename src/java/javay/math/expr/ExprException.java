@@ -2,12 +2,12 @@ package javay.math.expr;
 
 public class ExprException extends Exception {
 
-    /**
-     * 
-     */
-    private static final long serialVersionUID = 1L;
+  /**
+   * serialVersionUID.
+   */
+  private static final long serialVersionUID = 1L;
 
-    public ExprException(String msg) {
-        super(msg);
-    }
+  public ExprException(String msg) {
+    super(msg);
+  }
 }
